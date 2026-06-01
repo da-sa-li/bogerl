@@ -1169,13 +1169,14 @@
 </head>
 <body>
 
-<!-- ZEITLICH BEFRISTETES INFO-POPUP (blendet sich ab 04.06.2026 automatisch aus) -->
+<!-- INFO-POPUP – Text & Zeitraum werden unten im <script>-Abschnitt "INFO-POPUP"
+     eingestellt (z.B. fuer Neueroeffnung, Betriebsurlaub, Feiertage ...). -->
 <div id="infoPopup" class="info-popup" role="dialog" aria-modal="true" aria-labelledby="infoPopupText" hidden>
   <div class="info-popup__backdrop" data-popup-close></div>
   <div class="info-popup__box">
     <button type="button" class="info-popup__close" aria-label="Hinweis schliessen" data-popup-close>&times;</button>
-    <p class="info-popup__label">Wir freuen uns auf euch</p>
-    <p id="infoPopupText" class="info-popup__text">Neueröffnung am <span>04.06.</span>!</p>
+    <p class="info-popup__label" id="infoPopupLabel"></p>
+    <p id="infoPopupText" class="info-popup__text"></p>
   </div>
 </div>
 
@@ -1710,7 +1711,7 @@
   (function() {
     var ANZAHL_BILDER = 8;
     var ENDUNG = '.jpeg';
-    var INTERVALL = 4500; // Millisekunden zwischen den Wechseln
+    var INTERVALL = 7000; // Millisekunden, die ein Bild stehen bleibt (groesser = langsamer)
     var slots = document.querySelectorAll('#essensSlideshow .slide-slot');
     if (!slots.length) return;
     var anzahlSlots = slots.length;
@@ -1763,19 +1764,41 @@
     }, Math.round(INTERVALL / anzahlSlots));
   })();
 
-  // ─── ZEITLICH BEFRISTETES INFO-POPUP ───
-  // Zeigt den Neueroeffnungs-Hinweis und blendet ihn ab dem 04.06.2026
-  // automatisch und dauerhaft aus. Pro Sitzung wird er nach dem Schliessen
-  // nicht erneut angezeigt.
+  // ─── INFO-POPUP ───
+  // Universelles, zeitgesteuertes Hinweis-Popup – verwendbar fuer Neueroeffnung,
+  // Betriebsurlaub, Feiertage usw. Einfach unten die vier Werte anpassen.
+  // Datumsangaben als [Jahr, Monat, Tag] mit Monat NORMAL gezaehlt
+  // (1 = Januar ... 12 = Dezember).
   (function() {
+    // ===================== HIER ANPASSEN =====================
+    var LABEL = 'Wir freuen uns auf euch';               // kleine Zeile oben ('' = ausblenden)
+    var TEXT  = 'Neueröffnung am <span>04.06.</span>!';   // Hauptzeile; <span>..</span> = goldene Hervorhebung
+    var VON   = null;                                     // ab wann zeigen? null = sofort, sonst z.B. [2026, 7, 8]
+    var BIS   = [2026, 6, 4];                             // ab wann ausblenden? [2026, 6, 4] = ab 04.06.2026
+    // ---------------------------------------------------------
+    // Beispiel Betriebsurlaub – einfach die vier Zeilen oben ersetzen:
+    //   var LABEL = 'Hinweis';
+    //   var TEXT  = 'Wir machen Urlaub von <span>15. bis 30.07.</span>';
+    //   var VON   = [2026, 7, 8];   // Popup erscheint ab dem 08.07.2026
+    //   var BIS   = [2026, 8, 1];   // und verschwindet ab dem 01.08.2026
+    // =========================================================
+
     var popup = document.getElementById('infoPopup');
     if (!popup) return;
 
-    // Monat ist 0-basiert: 5 = Juni. Ab diesem Zeitpunkt nie wieder anzeigen.
-    var ablauf = new Date(2026, 5, 4, 0, 0, 0);
-    if (new Date() >= ablauf) return;
+    function datum(a) { return a ? new Date(a[0], a[1] - 1, a[2] || 1, 0, 0, 0) : null; }
+    var von = datum(VON), bis = datum(BIS), jetzt = new Date();
+    if (von && jetzt < von) return;   // Zeitraum hat noch nicht begonnen
+    if (bis && jetzt >= bis) return;  // Zeitraum ist vorbei
 
-    var SPEICHER_KEY = 'bogerl_neueroeffnung_popup';
+    var labelEl = document.getElementById('infoPopupLabel');
+    var textEl  = document.getElementById('infoPopupText');
+    if (labelEl) { labelEl.innerHTML = LABEL; labelEl.style.display = LABEL ? '' : 'none'; }
+    if (textEl)  { textEl.innerHTML = TEXT; }
+
+    // Speicher-Schluessel haengt an Text+Datum -> bei neuem Anlass erscheint das Popup wieder
+    var SPEICHER_KEY = 'bogerl_popup_' +
+      (TEXT + '|' + (BIS ? BIS.join('-') : '')).replace(/\s+/g, '_').slice(0, 60);
     try { if (sessionStorage.getItem(SPEICHER_KEY)) return; } catch (e) {}
 
     popup.hidden = false;
