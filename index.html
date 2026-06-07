@@ -689,6 +689,13 @@
     position: relative;
     overflow: hidden;
   }
+  .team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+  
   .team-photo::after {
     content: '';
     position: absolute;
@@ -1560,9 +1567,7 @@
   <div class="team-grid">
     <div class="team-card">
       <div class="team-photo">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-        </svg>
+        <img src="kevin.jpeg" alt="Kevin Pessl – Küche" loading="lazy">
       </div>
       <p class="team-name">Kevin Pessl</p>
       <p class="team-role" data-dialekt="Küch">Küche</p>
@@ -1570,14 +1575,13 @@
     </div>
     <div class="team-card">
       <div class="team-photo">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-        </svg>
+        <img src="philip.jpeg" alt="Philip Obergruber – Service" loading="lazy">
       </div>
       <p class="team-name">Philip Obergruber</p>
       <p class="team-role" data-dialekt="Service">Service</p>
       <p class="team-bio" data-dialekt="Herzlichkeit als Philosophie. Er schaut, dass si a jeda Gost vo Aufang o wuihfühlt.">Herzlichkeit als Philosophie. Er sorgt dafür, dass sich jeder Gast von Anfang an willkommen fühlt.</p>
     </div>
+    
     <!-- Sommelière auskommentiert – bei Bedarf wieder einkommentieren
     <div class="team-card">
       <div class="team-photo">
