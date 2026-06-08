@@ -955,6 +955,56 @@
     letter-spacing: 0.1em;
   }
 
+  /* ─── GETRÄNKEEMPFEHLUNGEN ─── */
+#getraenke { border-top: 0.5px solid var(--light-border); }
+
+.getraenke-liste {
+  display: grid;
+  gap: 1.6rem;
+  margin-top: 3.5rem;
+  max-width: 620px;
+}
+.getraenke-item {
+  border-bottom: 0.5px solid rgba(58,125,82,0.18);
+  padding-bottom: 1.4rem;
+}
+.getraenke-item:last-child { border-bottom: none; }
+.getraenke-anlass {
+  font-family: var(--sans);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.8;
+  margin-bottom: 0.4rem;
+}
+.getraenke-zeile {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+.getraenke-name {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--cream);
+  letter-spacing: 0.03em;
+}
+.getraenke-preis {
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--mid);
+  white-space: nowrap;
+}
+.getraenke-desc {
+  font-size: 0.78rem;
+  color: var(--mid);
+  letter-spacing: 0.05em;
+  margin-top: 0.3rem;
+}
+
   /* ─── MOBILE NAV ─── */
   .mobile-nav {
     display: flex;
@@ -1579,6 +1629,74 @@
   </div>
 </section>
 
+<!-- GETRÄNKEEMPFEHLUNGEN -->
+<section id="getraenke">
+  <p class="section-label fade-in" data-dialekt="Wos guads ins Glasl">Tradition im Glas</p>
+  <h2 class="fade-in fade-in-2" data-dialekt="Unsa <em>Empfehlungen</em>">Unsere <em>Empfehlungen</em></h2>
+  <div class="divider fade-in fade-in-3"></div>
+  <p class="lead fade-in fade-in-3" data-dialekt="A poar Tipps vo uns – vom Apperitiv bis zum Schlucki danoch.">Ein paar Tipps von uns – vom Aperitif bis zum Absacker.</p>
+
+  <div class="getraenke-liste">
+    <div class="getraenke-item fade-in fade-in-2">
+      <p class="getraenke-anlass" data-dialekt="Zum Stoatn">Zum Start</p>
+      <div class="getraenke-zeile">
+        <span class="getraenke-name">Bogerl Apperitiv</span>
+        <span class="getraenke-preis">€ 6,50</span>
+      </div>
+      <p class="getraenke-desc" data-dialekt="Ohne Alkohol – unsa Namensgeba zum Ostoßn.">Alkoholfrei – unser Namensgeber zum Anstoßen.</p>
+    </div>
+
+    <div class="getraenke-item fade-in fade-in-2">
+      <p class="getraenke-anlass" data-dialekt="Aus'm Weiß-Glasl">Aus dem Weinglas · Weiß</p>
+      <div class="getraenke-zeile">
+        <span class="getraenke-name">Grüner Veltliner „Löss"</span>
+        <span class="getraenke-preis">€ 4,20 / 24</span>
+      </div>
+      <p class="getraenke-desc" data-dialekt="Weingut Hindler · da Klassika zum Schnitzerl.">Weingut Hindler · der Klassiker zum Schnitzel.</p>
+    </div>
+
+    <div class="getraenke-item fade-in fade-in-3">
+      <p class="getraenke-anlass" data-dialekt="Aus'm Rot-Glasl">Aus dem Weinglas · Rot</p>
+      <div class="getraenke-zeile">
+        <span class="getraenke-name">Blaufränkisch <span style="font-size:0.68rem; color:var(--gold); letter-spacing:0.1em; margin-left:0.2rem; opacity:0.85;">Bio</span></span>
+        <span class="getraenke-preis">€ 4,40 / 25</span>
+      </div>
+      <p class="getraenke-desc" data-dialekt="Weingut Wellanschitz · passt zum gschmortn Hüferschwanzerl.">Weingut Wellanschitz · passt zum geschmorten Hüferschwanzerl.</p>
+    </div>
+
+    <div class="getraenke-item fade-in fade-in-3">
+      <p class="getraenke-anlass" data-dialekt="Frisch zapft">Frisch gezapft</p>
+      <div class="getraenke-zeile">
+        <span class="getraenke-name">Freistädter Junghopfenpils</span>
+        <span class="getraenke-preis">ab € 3,50</span>
+      </div>
+      <p class="getraenke-desc" data-dialekt="Vo da Braucommune Freistod – hopfig & frisch.">Von der Braucommune Freistadt – hopfig & frisch.</p>
+    </div>
+
+    <div class="getraenke-item fade-in fade-in-4">
+      <p class="getraenke-anlass" data-dialekt="Hoamat im Glasl">Heimat im Glas</p>
+      <div class="getraenke-zeile">
+        <span class="getraenke-name">Most</span>
+        <span class="getraenke-preis">ab € 4,00</span>
+      </div>
+      <p class="getraenke-desc" data-dialekt="Pur oda gspritzt – echt boanstänsig.">Pur oder gespritzt – ehrlich und bodenständig.</p>
+    </div>
+
+    <!-- HAUSGEMACHTER LIMONCELLO – auskommentiert, bis der Preis feststeht.
+         Zum Aktivieren einfach die umschließenden Kommentarzeichen entfernen
+         und € __ durch den Preis ersetzen.
+    <div class="getraenke-item fade-in fade-in-4">
+      <p class="getraenke-anlass" data-dialekt="Zum Obschluss">Zum Abschluss</p>
+      <div class="getraenke-zeile">
+        <span class="getraenke-name">Hausgemachter Limoncello</span>
+        <span class="getraenke-preis">€ __</span>
+      </div>
+      <p class="getraenke-desc" data-dialekt="Söwa gmocht – a aa ois Spritz zum hom.">Selbstgemacht – auch als Spritz erhältlich.</p>
+    </div>
+    -->
+  </div>
+</section>
+  
 <!-- TEAM -->
 <section id="team">
   <p class="section-label fade-in" data-dialekt="Hinta de Kulissn">Hinter den Kulissen</p>
