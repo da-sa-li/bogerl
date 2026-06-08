@@ -661,16 +661,26 @@
     color: #ffffff;
   }
 .urlaub-hinweis {
-  margin-top: 0.5rem;
-  padding: 0.8rem 1.1rem;
-  border: 0.5px solid var(--gold);
-  background: rgba(201,169,110,0.08);
+  margin-top: 0.8rem;
+  padding: 0;
+  border: none;
+  background: none;
   font-family: var(--serif);
-  font-size: 1.25rem;
-  font-style: normal;
+  font-size: 1.15rem;
   color: var(--gold);
   letter-spacing: 0.02em;
   line-height: 1.5;
+}
+.urlaub-label {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.8;
+  margin-bottom: 0.4rem;
 }
   /* ─── TEAM ─── */
   #team { border-top: 0.5px solid var(--light-border); }
@@ -1412,8 +1422,10 @@
         </div>
         <div>
           <h4 style="font-family:var(--serif); font-size:1rem; font-weight:400; color:var(--cream); margin-bottom:0.5rem;" data-dialekt="Urlaub">Urlaub</h4>
-          <p class="body" data-dialekt="Wann ma auf Urlaub san und zuagsperrt is, sog ma eich rechtzeitig do auf da Seitn und a auf Instagram und so Bescheid.">Unsere Urlaubs- und Schließzeiten geben wir rechtzeitig auf dieser Seite sowie auf unseren Social-Media-Kanälen bekannt.</p>
-          <p class="urlaub-hinweis" data-dialekt="Mia san ned do von Mi. 09.09. bis Do. 24.09.!">Wir sind von Mi. 09.09. bis Do. 24.09. auf Urlaub!</p>
+          <p class="body" data-dialekt="Aktuelle Schliaßzeitn findts do und auf Instagram.">Aktuelle Schließzeiten findet ihr hier und auf Instagram.</p>
+<p class="urlaub-hinweis" data-dialekt="<span class=&quot;urlaub-label&quot;>Mia san ned do</span>Mi. 09.09. – Do. 24.09.">
+  <span class="urlaub-label">Betriebsurlaub</span>Mi. 09.09. – Do. 24.09.
+</p>
         </div>
       </div>
     </div>
